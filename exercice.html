@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Preview</title>
+</head>
+<body>
+  <div class="image-container">
+    <img id="previewPic" src="path_to_default_image.jpg" alt="Default Image">
+  </div>
+  <div id="image" class="image-text">
+    Hover over an image below to display here.
+  </div>
+  <div class="other-images">
+    <img src="image1.jpg" alt="Image 1" onmouseover="upDate(this)" onmouseout="undo()">
+    <img src="image2.jpg" alt="Image 2" onmouseover="upDate(this)" onmouseout="undo()">
+  </div>
+</body>
+  <script>
+    // Function to update image and text
+function upDate(element) {
+  // Get the alt and src attributes of the hovered image
+  const altText = element.alt;
+  const imgUrl = element.src;
+
+  // Change the text of the div with the id of 'image'
+  const imageText = document.getElementById('image');
+  imageText.textContent = altText;
+
+  // Change the background image of the element with the id of 'image'
+  const imageDiv = document.getElementById('image');
+  imageDiv.style.backgroundImage = `url(${imgUrl})`;
+
+  console.log('Updated text:', altText);
+  console.log('Updated background image URL:', imgUrl);
+}
+
+// Function to undo changes
+function undo() {
+  const originalText = 'Hover over an image below to display here.';
+  const originalImageUrl = 'path_to_default_image.jpg'; // Set the original image URL
+
+  // Reset text of the div with the id of 'image'
+  const imageText = document.getElementById('image');
+  imageText.textContent = originalText;
+
+  // Reset background image of the div with the id of 'image'
+  const imageDiv = document.getElementById('image');
+  imageDiv.style.backgroundImage = `url(${originalImageUrl})`;
+}
+
+  </script>
+</html>
